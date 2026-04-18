@@ -1,21 +1,23 @@
-#ifndef CPP02_FIXED_H
-#define CPP02_FIXED_H
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
+#include <iostream>
+#include <string>
 
 class Fixed
 {
 	private:
 		int value;
-		static const int bits;
+		static const int bits = 8;
 	public:
 		Fixed();
 		Fixed(const Fixed& src);
 		Fixed& operator=(const Fixed& src);
 		~Fixed();
+
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 
 };
 
-
-#endif //CPP02_FIXED_H
+#endif
