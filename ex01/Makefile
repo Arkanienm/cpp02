@@ -1,4 +1,4 @@
-NAME     = harl
+NAME     = Fixed
 CXX      = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98 -I.
 
