@@ -1,25 +1,29 @@
 NAME     = Fixed
 CXX      = c++
-CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98 -I.
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
-SRC     = main.cpp Fixed.cpp
+SRCS_DIR = srcs/
+OBJ_DIR  = .obj/
 
-OBJ     = $(SRC:.cpp=.o)
+SRCS     = $(SRCS_DIR)main.cpp $(SRCS_DIR)Fixed.cpp
+
+OBJ     = $(SRCS:$(SRCS_DIR)%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
